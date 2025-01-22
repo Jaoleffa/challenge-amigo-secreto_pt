@@ -53,6 +53,8 @@ function limparCampoLista() {
     while (campoLista.firstChild) {
         campoLista.removeChild(campoLista.firstChild);
     }
+    listaDeAmigos = [];
     campoLista.innerHTML = '';
+    tituloH2.innerHTML = 'Digite o nome dos seus amigos';
 }
 
