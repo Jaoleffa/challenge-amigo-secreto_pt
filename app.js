@@ -1,5 +1,6 @@
 let listaDeAmigos = [];
 let tituloH2 = document.querySelector('h2')
+let tamanhoDaLista = 0;
 
 function adicionarAmigo() {
     tituloH2.innerHTML = 'Digite o nome dos seus amigos';
@@ -10,7 +11,6 @@ function adicionarAmigo() {
     if (nome !== '' && !listaDeAmigos.includes(nome)) {
 
         listaDeAmigos.push(nome);
-        console.log(listaDeAmigos);
         tituloH2.innerHTML = 'Amigo adicionado!';
         limparCampo();
 
@@ -26,10 +26,33 @@ function adicionarAmigo() {
         tabelaDeAmigos.appendChild(amigoNaLista);
     }
   )
+    tamanhoDaLista = listaDeAmigos.length;
+}
 
+
+
+function sortearAmigo() {
+    let resultado = document.getElementById('resultado')
+    if (tamanhoDaLista != 0) {
+        let amigoEscolhido = parseInt(Math.random() * tamanhoDaLista);
+        console.log(amigoEscolhido);
+         resultado.innerHTML = `O amigo secreto sorteado é: ${listaDeAmigos[amigoEscolhido]}`
+    } else {
+        resultado.innerHTML = 'Você não adicionou nenhum amigo a lista, tente novamente'
+    }
+    limparCampoLista();
 }
 
 function limparCampo() {
-    let campo = document.getElementById('amigo')
+    let campo = document.getElementById('amigo');
     campo.value = '';
 }
+
+function limparCampoLista() {
+    let campoLista = document.getElementById('listaAmigos');
+    while (campoLista.firstChild) {
+        campoLista.removeChild(campoLista.firstChild);
+    }
+    campoLista.innerHTML = '';
+}
+
